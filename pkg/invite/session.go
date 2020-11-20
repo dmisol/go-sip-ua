@@ -85,7 +85,8 @@ func NewInviteSession(edp *endpoint.EndPoint, uaType string, contact *sip.Contac
 	}
 
 	if uaType == "UAS" {
-		s.localURI = sip.Address{Uri: to.Address, Params: to.Params}
+		//s.localURI = sip.Address{Uri: to.Address, Params: to.Params}
+		s.localURI = sip.Address{Uri: req.Recipient()}
 		s.remoteURI = sip.Address{Uri: from.Address, Params: from.Params}
 		s.remoteTarget = contact.Address
 	} else if uaType == "UAC" {
